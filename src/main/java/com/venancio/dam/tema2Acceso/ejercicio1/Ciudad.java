@@ -15,10 +15,10 @@ public class Ciudad {
 		this.setPoblacion(poblacion);
 	}
 
-	public Ciudad(String nombre, String codigoPais, String distrito, int poblacion) {
+	public Ciudad(String nombre, String codPais, String distrito, int poblacion) {
 
 		this.setNombre(nombre);
-		this.setCodigoPais(codigoPais);
+		this.setCodigoPais(codPais);
 		this.setDistrito(distrito);
 		this.setPoblacion(poblacion);
 	}
@@ -28,8 +28,8 @@ public class Ciudad {
 		return "Ciudad{" +
 	            "\tid='" + getId() + '\'' +
 	            ", \tnombre='" + getNombre() + '\'' +
-	            ", \tcodigoPais='" + getCodigoPais() + '\'' +
-	            ", \tdisitrito='" + getDistrito() + '\'' +
+	            ", \tcodPais='" + getCodigoPais() + '\'' +
+	            ", \tdistrito='" + getDistrito() + '\'' +
 	            ", \tpoblacion='" + getPoblacion() + '\'' +
 	            '}';
 	}

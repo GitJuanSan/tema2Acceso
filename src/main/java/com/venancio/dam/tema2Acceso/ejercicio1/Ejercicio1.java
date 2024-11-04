@@ -82,7 +82,7 @@ public class Ejercicio1 {
 		poblacion = sc.nextInt();
 		List<Pais> paises = GestorPais.getPaisesConMayorPoblacionQue(poblacion);
 		if (paises.isEmpty()) {
-			System.out.println("No se han encontrado paises con esos datos");
+			System.out.println("[ERROR] No se han encontrado paises con esos datos");
 		}else {
 			for (Pais pais : paises) {
 				System.out.println(pais);
@@ -299,7 +299,7 @@ public class Ejercicio1 {
 				3)  Mostrar paises ordenados por codigo
 				4)  Mostrar paises ordenados por habitantes
 				5)  Devolver una ciudad a partir de su id
-				6)  Devolver una o varias cuidades a partir de su nombre
+				6)  Devolver una o varias ciudades a partir de su nombre
 				7)  Devolver un pais a partir de su id
 				8)  Devolver un pais a partir de su nombre
 				9)  Mostrar las ciudades de un pais
