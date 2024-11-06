@@ -1,6 +1,6 @@
-package com.venancio.dam.tema2Acceso.ejemplos;
+package com.venancio.dam.tema2Acceso.ejercicio7;
 
-public class Ejemplo4Asignatura {
+public class Ejercicio7Asignatura {
 	private int id;
 	private String nombre;
 	private int creditos;
@@ -9,7 +9,7 @@ public class Ejemplo4Asignatura {
 	private int cuatrimestre;
 	private int idGrado;
 
-	public Ejemplo4Asignatura(int id, String nombre, int creditos, String tipo, int curso, int cuatrimestre,
+	public Ejercicio7Asignatura(int id, String nombre, int creditos, String tipo, int curso, int cuatrimestre,
 			int idGrado) {
 		this.id = id;
 		this.nombre = nombre;

@@ -1,4 +1,4 @@
-package com.venancio.dam.tema2Acceso.ejemplos;
+package com.venancio.dam.tema2Acceso.ejercicio7;
 
 import java.nio.file.Path;
 import java.sql.Connection;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ejemplo4AsignaturaDAO {
+public class Ejercicio7AsignaturaDAO {
 
 	private static Connection creaConexion() throws SQLException {
 		Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/universidad", "root", "");

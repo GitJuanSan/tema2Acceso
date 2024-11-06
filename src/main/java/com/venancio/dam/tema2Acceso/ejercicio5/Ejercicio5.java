@@ -21,12 +21,14 @@ public class Ejercicio5 {
 		do {
 			menu();
 			opcion=sc.nextInt();
+			sc.nextLine();
+			
 			switch(opcion) {
 				case 0:
 					System.out.println("¡¡Hasta luego!!");
 					break;
 				case 1:
-					if(crearTablaEmpleado()) {
+					if(!crearTablaEmpleado()) {
 						System.out.println("Tabla empleado creada con éxito");
 					}else {
 						System.out.println("[ERROR] Fallo al crear la tabla empleado");
@@ -40,6 +42,11 @@ public class Ejercicio5 {
 					}
 					break;
 				case 3:
+					if(mostrarColumnas()) {
+						System.out.println();
+					}else {
+						System.out.println("[ERROR] Fallo al mostrar las columnas");
+					}
 					break;
 				default:
 					System.out.println("[ERROR] Opción no válida");
@@ -81,7 +88,7 @@ public class Ejercicio5 {
 		try (Connection conexion=DriverManager.getConnection("jdbc:mysql://localhost:3306/empleadoBBDD", "root", "");){
 			DatabaseMetaData dbmd = conexion.getMetaData();
 			
-			ResultSet tablas = dbmd.getTables(null, null, "%", new String[] { "TABLE" });
+			ResultSet tablas = dbmd.getTables("empleadobbdd", null, null, new String[] { "TABLE" });
 
             
             while (tablas.next()) {
@@ -100,29 +107,30 @@ public class Ejercicio5 {
 	public static boolean mostrarColumnas() {
 		try (Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/empleado", "root", "")) {
             DatabaseMetaData dbmd = conexion.getMetaData();
-            ResultSet tablas = dbmd.getTables(null, null, "%", new String[] { "TABLE" });
+            ResultSet tablas = dbmd.getTables("empleadobbdd", null, null, new String[] { "TABLE" });
 
             System.out.println("Tablas y sus columnas en la base de datos 'empleado':");
             while (tablas.next()) {
                 String nombreTabla = tablas.getString("TABLE_NAME");
                 System.out.println("\nTabla: " + nombreTabla);
 
-                ResultSet columnas = dbmd.getColumns(null, null, nombreTabla, "%");
+                ResultSet columnas = dbmd.getColumns(null, null, nombreTabla, null);
 
                 while (columnas.next()) {
                     String nombreColumna = columnas.getString("COLUMN_NAME");
                     String tipoColumna = columnas.getString("TYPE_NAME");
                     int tamanoColumna = columnas.getInt("COLUMN_SIZE");
 
+                   
                     System.out.println("Columna: " + nombreColumna + ", Tipo: " + tipoColumna + ", Tamaño: " + tamanoColumna);
                 }
-                columnas.close();
+
             }
             
             return true;
 
         } catch (SQLException e) {
-            System.out.println("Error: " + e.getMessage());
+        	//e.printStackTrace();)
             return false;
         }
 	}	
