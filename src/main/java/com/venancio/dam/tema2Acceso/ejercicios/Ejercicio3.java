@@ -11,8 +11,9 @@ import com.mysql.cj.xdevapi.Statement;
 public class Ejercicio3 {
 	
 	public static void main(String[] args) {
-		int opcion;
+		int opcion=-1;
 		Scanner sc = new Scanner(System.in);
+		
 		do {
 			
 		}while(opcion!=0);
