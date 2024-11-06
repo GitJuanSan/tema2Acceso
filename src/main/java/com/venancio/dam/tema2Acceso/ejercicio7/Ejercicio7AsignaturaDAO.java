@@ -103,7 +103,7 @@ public class Ejercicio7AsignaturaDAO {
 
 		try (Connection conexion = creaConexion();
 				PreparedStatement consulta = conexion.prepareStatement("SELECT * FROM asignatura")) {
-			System.out.println("LEER TODOS: " + consulta);
+			//System.out.println("LEER TODOS: " + consulta);
 			ResultSet resultadoConsulta = consulta.executeQuery();
 			while (resultadoConsulta.next()) {
 				Ejercicio7Asignatura nuevaAsignatura = new Ejercicio7Asignatura(resultadoConsulta.getInt("id"),

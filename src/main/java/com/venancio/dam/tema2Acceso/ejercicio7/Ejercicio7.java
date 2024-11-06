@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Ejercicio7 {
 
 	public static void main(String[] args) {
-		List<Ejercicio7Asignatura> asignaturas = Ejercicio7AsignaturaDAO.leerTodos();
+		
 		
 		int opcion=-1;
 		
@@ -25,7 +25,7 @@ public class Ejercicio7 {
 					System.out.println("¡¡Hasta luego!!");
 					break;
 				case 1:
-					leerAsignaturas(asignaturas);
+					leerAsignaturas();
 					break;
 				case 2:
 					id=pedirId(sc);		
@@ -37,9 +37,8 @@ public class Ejercicio7 {
 					Ejercicio7AsignaturaDAO.eliminar(id);
 					break;
 				case 4:
-					id=pedirId(sc);		
-					asignatura=Ejercicio7AsignaturaDAO.leer(id);
-					Ejercicio7AsignaturaDAO.actualizar(asignatura);
+					
+					modificarAsignatura(sc);
 					break;
 				case 5:
 					Ejercicio7AsignaturaDAO.escribir(añadirAsignatura(sc));
@@ -70,14 +69,18 @@ public class Ejercicio7 {
 	}
 	
 	public static int pedirId(Scanner sc) {
+		List<Ejercicio7Asignatura> asignaturas = Ejercicio7AsignaturaDAO.leerTodos();
+		
 		System.out.println("Introduzca el id: ");
 		int id=sc.nextInt();
 		sc.nextLine();
 		
 		return id;
+
 	}
 	
-	public static void leerAsignaturas(List <Ejercicio7Asignatura> lista) {
+	public static void leerAsignaturas() {
+		List<Ejercicio7Asignatura> lista = Ejercicio7AsignaturaDAO.leerTodos();
 		System.out.println("Las asignaturas almacenadas en la base de datos son:");
 		for (Ejercicio7Asignatura asignatura : lista)
 			System.out.println(asignatura);
@@ -90,32 +93,73 @@ public class Ejercicio7 {
 		int creditos=0, curso=0, cuatrimestre=0, idGrado=0, id=0;
 		
 		do {
-			id=pedirId(sc);
 			
 			System.out.println("Introduzca el nombre de la asignatura: ");
 			nombre=sc.nextLine();
 			
 			System.out.println("Introduzca el numero de creditos: ");
 			creditos=sc.nextInt();
+			sc.nextLine();
 			
 			System.out.println("Introduzca el tipo de la asignatura: ");
 			tipo=sc.nextLine();
 			
 			System.out.println("Introduzca el curso: ");
 			curso=sc.nextInt();
+			sc.nextLine();
 			
 			System.out.println("Introduzca el cuatrimestre: ");
 			cuatrimestre=sc.nextInt();
+			sc.nextLine();
 			
 			System.out.println("Introduzca el id del Grado: ");
 			idGrado=sc.nextInt();
+			sc.nextLine();
 			
 		}while(id<0||nombre==null||tipo==null||creditos<=0||curso<0||cuatrimestre<0||idGrado<0);
 		
-		Ejercicio7Asignatura nuevo = new Ejercicio7Asignatura(id, nombre, creditos, tipo, curso, cuatrimestre, idGrado);
+		Ejercicio7Asignatura nuevo = new Ejercicio7Asignatura(nombre, creditos, tipo, curso, cuatrimestre, idGrado);
 		
 		return nuevo;
 	}
 	
+	public static void modificarAsignatura(Scanner sc) {
+		
+		String nombre="", tipo="";
+		int creditos=0, curso=0, cuatrimestre=0, idGrado=0;
+		
+		int id=pedirId(sc);		
+
+		
+		do {
+			
+			System.out.println("Introduzca el nombre de la asignatura: ");
+			nombre=sc.nextLine();
+			
+			System.out.println("Introduzca el numero de creditos: ");
+			creditos=sc.nextInt();
+			sc.nextLine();
+			
+			System.out.println("Introduzca el tipo de la asignatura: ");
+			tipo=sc.nextLine();
+			
+			System.out.println("Introduzca el curso: ");
+			curso=sc.nextInt();
+			sc.nextLine();
+			
+			System.out.println("Introduzca el cuatrimestre: ");
+			cuatrimestre=sc.nextInt();
+			sc.nextLine();
+			
+			System.out.println("Introduzca el id del Grado: ");
+			idGrado=sc.nextInt();
+			sc.nextLine();
+			
+		}while(nombre==null||tipo==null||creditos<=0||curso<0||cuatrimestre<0||idGrado<0);
+		
+		
+		
+		Ejercicio7AsignaturaDAO.actualizar(new Ejercicio7Asignatura(id, nombre, creditos, tipo, curso, cuatrimestre, idGrado));
+	}
 	
 }

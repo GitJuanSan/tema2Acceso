@@ -19,6 +19,16 @@ public class Ejercicio7Asignatura {
 		this.cuatrimestre = cuatrimestre;
 		this.idGrado = idGrado;
 	}
+	
+	public Ejercicio7Asignatura(String nombre, int creditos, String tipo, int curso, int cuatrimestre,
+			int idGrado) {
+		this.nombre = nombre;
+		this.creditos = creditos;
+		this.tipo = tipo;
+		this.curso = curso;
+		this.cuatrimestre = cuatrimestre;
+		this.idGrado = idGrado;
+	}
 
 	@Override
 	public String toString() {
